@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  port: 5432
+
+development:
+  <<: *default
+  database: td_jobs_development
+  username: td_jobs
+  password: td_jobs
+  host: localhost
+
+test:
+  <<: *default
+  database: td_jobs_test
+  username: td_jobs
+  password: td_jobs
+  host: localhost
+
+production:
+  <<: *default
+  database: td_jobs_production
+  username: <%= ENV['TDJOBS_DATABASE_USER'] %>
+  password: <%= ENV['TDJOBS_DATABASE_PASSWORD'] %>
+  host:     <%= ENV['TDJOBS_DATABASE_HOST'] || 'localhost' %>

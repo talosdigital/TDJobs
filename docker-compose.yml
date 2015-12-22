@@ -1,0 +1,10 @@
+tdjobs_db:
+  image: library/postgres:9.4
+  ports:
+    - "5432:5432"
+tdjobs_api:
+  build: .
+  ports:
+    - "3000:3000"
+  links:
+    - tdjobs_db
